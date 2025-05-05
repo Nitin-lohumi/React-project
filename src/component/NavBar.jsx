@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/NavStyle.css";
 import {
@@ -14,15 +14,16 @@ import {
   useTheme,
   Switch,
 } from "@mui/material";
+import { ThemeContext } from "../utility/ThemeProvider";
 import MenuIcon from "@mui/icons-material/Menu";
 function NavBar() {
+  const Values = useContext(ThemeContext);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
-  const [mode, setMode] = useState(false);
   const handleModeChange = () => {
-    setMode((prev) => !prev);
+    Values.setMode((prev) => !prev);
   };
   return (
     <>
@@ -72,10 +73,9 @@ function NavBar() {
             )}
             <div>
               <Switch
-                checked={mode}
+                checked={Values.mode}
                 onChange={handleModeChange}
                 name="mode"
-                // inputProps={{ "aria-label": "primary checkbox" }}
               />
             </div>
           </div>
@@ -87,6 +87,10 @@ function NavBar() {
           <List sx={{ width: 250 }}>
             <ListItem onClick={toggleDrawer}>
               <NavLink
+                style={{
+                  color: theme.palette.text.primary,
+                  textDecoration: "none",
+                }}
                 to="/"
                 className={({ isActive }) =>
                   isActive ? "drawer-link active" : "drawer-link"
@@ -97,6 +101,10 @@ function NavBar() {
             </ListItem>
             <ListItem onClick={toggleDrawer}>
               <NavLink
+                style={{
+                  color: theme.palette.text.primary,
+                  textDecoration: "none",
+                }}
                 to="/ExchangeRate"
                 className={({ isActive }) =>
                   isActive ? "drawer-link active" : "drawer-link"
@@ -107,6 +115,10 @@ function NavBar() {
             </ListItem>
             <ListItem onClick={toggleDrawer}>
               <NavLink
+                style={{
+                  color: theme.palette.text.primary,
+                  textDecoration: "none",
+                }}
                 to="/about"
                 className={({ isActive }) =>
                   isActive ? "drawer-link active" : "drawer-link"
@@ -117,6 +129,10 @@ function NavBar() {
             </ListItem>
             <ListItem onClick={toggleDrawer}>
               <NavLink
+                style={{
+                  color: theme.palette.text.primary,
+                  textDecoration: "none",
+                }}
                 to="/ErrorPage"
                 className={({ isActive }) =>
                   isActive ? "drawer-link active" : "drawer-link"
