@@ -1,7 +1,7 @@
 .nav-button {
   color: white !important;
 }
-.nav-button:hover{
+.nav-button:hover {
   background: rgba(40, 40, 81, 0.1);
 }
 .nav-button.active {
@@ -9,7 +9,7 @@
   background-color: #083fca;
   color: beige;
 }
-.buttons{
+.buttons {
   display: flex;
   gap: 20px;
 }

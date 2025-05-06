@@ -22,9 +22,9 @@ const ErrorPage = () => {
           404 - Page Not Found
         </Typography>
         <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
-          The page you're looking for doesn't exist.
+          Something went wrong in the application.
         </Typography>
-        <Button href={"/"} sx={{ m: 5 }} color="error" variant="contained">
+        <Button href={"/"} sx={{ m: 5 }} color="primary" variant="outlined">
           Go To Home
         </Button>
       </div>
@@ -33,4 +33,3 @@ const ErrorPage = () => {
 };
 
 export default ErrorPage;
-

@@ -13,7 +13,8 @@ import {
   useMediaQuery,
   useTheme,
   Switch,
-  Box
+  Box,
+  Divider,
 } from "@mui/material";
 import { ContextProvider } from "../utility/ContextAPI";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -29,7 +30,7 @@ function NavBar() {
   return (
     <>
       <AppBar position="static" className="NavBar">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar sx={{ justifyContent: "space-between", boxShadow: 3 }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             {isMobile && (
               <IconButton
@@ -85,7 +86,7 @@ function NavBar() {
 
       {isMobile && (
         <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-          <List sx={{ width: 250 }}>
+          <List sx={{ width: 250, display: "flex", flexDirection: "column" }}>
             <ListItem onClick={toggleDrawer}>
               <NavLink
                 style={{
@@ -100,6 +101,13 @@ function NavBar() {
                 Home
               </NavLink>
             </ListItem>
+            <Divider
+              sx={{
+                width: "100%",
+                color: theme.palette.text.secondary,
+                background: theme.palette.background.default,
+              }}
+            />
             <ListItem onClick={toggleDrawer}>
               <NavLink
                 style={{
@@ -114,6 +122,13 @@ function NavBar() {
                 Exchange Rates (Live)
               </NavLink>
             </ListItem>
+            <Divider
+              sx={{
+                width: "100%",
+                color: theme.palette.text.secondary,
+                background: theme.palette.background.default,
+              }}
+            />
             <ListItem onClick={toggleDrawer}>
               <NavLink
                 style={{
@@ -128,6 +143,13 @@ function NavBar() {
                 About
               </NavLink>
             </ListItem>
+            <Divider
+              sx={{
+                width: "100%",
+                color: theme.palette.text.secondary,
+                background: theme.palette.background.default,
+              }}
+            />
             <ListItem onClick={toggleDrawer}>
               <NavLink
                 style={{
