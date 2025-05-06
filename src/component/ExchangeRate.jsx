@@ -8,7 +8,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Box
+  Box,
 } from "@mui/material";
 import { ContextProvider } from "../utility/ContextAPI";
 import axios from "axios";
@@ -37,9 +37,7 @@ const ExchangeRate = () => {
         setLoading(false);
       }
     };
-
     fetchRates();
-
     const interval = setInterval(fetchRates, 300000);
     return () => clearInterval(interval);
   }, [baseCurrency]);
@@ -77,28 +75,35 @@ const ExchangeRate = () => {
           </Select>
         </FormControl>
       )}
-
       <Card sx={{ maxWidth: 1000, margin: "auto", mt: 2 }}>
         <CardContent className="content">
           <Typography variant="h6" gutterBottom className="heading">
             Live Exchange Rates (Base: {baseCurrency})
           </Typography>
           {loading ? (
-            <Box sx={{display:"flex",justifyContent:"center"}}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
               <CircularProgress />
             </Box>
           ) : (
-            <Box
-              sx={{ maxHeight: 300, overflowY: "auto" }}
-              className="liveCurr"
-            >
-              {Object.entries(rates).map(([currency, rate]) => (
-                <Typography key={currency} className="currency">
-                  1 {"   " + baseCurrency + "  "} = {rate + "  "}{" "}
-                  {"  " + currency}
+            <>
+              {rates ? (
+                <Box
+                  sx={{ maxHeight: "60vh", overflowY: "auto" }}
+                  className="liveCurr"
+                >
+                  {Object.entries(rates).map(([currency, rate]) => (
+                    <Typography key={currency} className="currency">
+                      1 {"   " + baseCurrency + "  "} = {rate + "  "}{" "}
+                      {"  " + currency}
+                    </Typography>
+                  ))}
+                </Box>
+              ) : (
+                <Typography variant="h6" color="error">
+                  Error fatching data
                 </Typography>
-              ))}
-            </Box>
+              )}
+            </>
           )}
         </CardContent>
       </Card>

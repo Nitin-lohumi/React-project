@@ -104,7 +104,7 @@ function NavBar() {
             <Divider
               sx={{
                 width: "100%",
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.primary,
                 background: theme.palette.background.default,
               }}
             />
@@ -125,7 +125,7 @@ function NavBar() {
             <Divider
               sx={{
                 width: "100%",
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.primary,
                 background: theme.palette.background.default,
               }}
             />
@@ -146,7 +146,7 @@ function NavBar() {
             <Divider
               sx={{
                 width: "100%",
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.primary,
                 background: theme.palette.background.default,
               }}
             />

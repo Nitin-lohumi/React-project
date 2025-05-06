@@ -68,7 +68,12 @@ function EMI_chart({ emi, data, reset }) {
     setSchedule(scheduleData);
   }, [emi, exchangeRates, targetCurrency, InterestRate, termYear, Loan]);
 
-  if (loading) return <CircularProgress />;
+  if (loading)
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center", padding: "10px" }}>
+        <CircularProgress color={theme.palette.text.primary} />
+      </Box>
+    );
 
   const currencySymbol = targetCurrency === "INR" ? "₹" : "$";
   const rate = exchangeRates[targetCurrency] || 1;
@@ -90,10 +95,7 @@ function EMI_chart({ emi, data, reset }) {
         }}
       >
         <Box className="selectClass">
-          <Typography
-            variant="h6"
-            sx={{ color: theme.palette.text.primary }}
-          >
+          <Typography variant="h6" sx={{ color: theme.palette.text.primary }}>
             Select Currency:
           </Typography>
           <Select

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, useTheme,Divider } from "@mui/material";
+import { Box, Typography, useTheme, Divider } from "@mui/material";
 function About() {
   const theme = useTheme();
   return (
@@ -8,6 +8,7 @@ function About() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        margin: "10px",
       }}
     >
       <Box
@@ -21,25 +22,37 @@ function About() {
         <Typography
           variant="h3"
           sx={{
+            textTransform: "capitalize",
             color: theme.palette.text.primary,
             display: "flex",
           }}
         >
-          About This App Page
+          About This App
         </Typography>
-        <Typography variant="h6" sx={{ color: theme.palette.text.secondary }}>
-          this is a Loan calulate app is a modern , single -page application
-          using react js ans Matrial UI 
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "capitalize",
+            textWrap: "pretty",
+            padding: "14px 0",
+            color: theme.palette.text.secondary,
+          }}
+        >
+          this is a Loan calulate app is a modern , single - page application
+          using react js ans Matrial UI
         </Typography>
         <Divider
           sx={{
             width: "100%",
             color: theme.palette.text.secondary,
-            background: theme.palette.background.default
+            background: theme.palette.background.default,
           }}
         />
-        <Typography variant="h5" sx={{color:theme.palette.text.secondary}}>
-            done  ✅
+        <Typography
+          variant="h5"
+          sx={{ padding: "10px 0", color: theme.palette.text.secondary }}
+        >
+          done ✅
         </Typography>
       </Box>
     </Box>
