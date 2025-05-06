@@ -75,10 +75,10 @@ function EMI_chart({ emi, data, reset }) {
   return (
     <>
       <Box>
-        <h2 style={{ color: theme.palette.text.primary }}>
+        <Typography variant="h5" sx={{ color: theme.palette.text.primary }}>
           Monthly EMI: {currencySymbol}
           {emi}
-        </h2>
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -89,10 +89,10 @@ function EMI_chart({ emi, data, reset }) {
           justifyContent: "space-between",
         }}
       >
-        <div className="selectClass">
+        <Box className="selectClass">
           <Typography
             variant="h6"
-            style={{ color: theme.palette.text.primary }}
+            sx={{ color: theme.palette.text.primary }}
           >
             Select Currency:
           </Typography>
@@ -107,12 +107,12 @@ function EMI_chart({ emi, data, reset }) {
               </MenuItem>
             ))}
           </Select>
-        </div>
-        <div className="buttonClass">
+        </Box>
+        <Box className="buttonClass">
           <Button variant="outlined" onClick={reset}>
             Reset
           </Button>
-        </div>
+        </Box>
       </Box>
 
       <TableContainer

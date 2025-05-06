@@ -8,6 +8,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Box
 } from "@mui/material";
 import { ContextProvider } from "../utility/ContextAPI";
 import axios from "axios";
@@ -44,7 +45,7 @@ const ExchangeRate = () => {
   }, [baseCurrency]);
 
   return (
-    <div>
+    <Box>
       {currencyList.length > 0 && (
         <FormControl
           fullWidth
@@ -83,22 +84,25 @@ const ExchangeRate = () => {
             Live Exchange Rates (Base: {baseCurrency})
           </Typography>
           {loading ? (
-            <CircularProgress />
+            <Box sx={{display:"flex",justifyContent:"center"}}>
+              <CircularProgress />
+            </Box>
           ) : (
-            <div
-              style={{ maxHeight: 400, overflowY: "auto" }}
+            <Box
+              sx={{ maxHeight: 300, overflowY: "auto" }}
               className="liveCurr"
             >
               {Object.entries(rates).map(([currency, rate]) => (
                 <Typography key={currency} className="currency">
-                  1 {"   "+baseCurrency + "  "} = {rate + "  "} {"  " + currency}
+                  1 {"   " + baseCurrency + "  "} = {rate + "  "}{" "}
+                  {"  " + currency}
                 </Typography>
               ))}
-            </div>
+            </Box>
           )}
         </CardContent>
       </Card>
-    </div>
+    </Box>
   );
 };
 

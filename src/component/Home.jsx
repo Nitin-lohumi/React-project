@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Box, TextField, useTheme, Button } from "@mui/material";
+import { Box, TextField, useTheme, Button, Typography } from "@mui/material";
 import "../styles/HomeStyle.css";
 import calculateEMI from "../utility/CalculateEMI";
 import EMI_chart from "./EMI_chart";
@@ -41,9 +41,10 @@ function Home() {
       sx={{ p: 2, backgroundColor: theme.palette.background.default }}
       className="HomeBox"
     >
-      <div className="Box1">
-        <h1
-          style={{
+      <Box className="Box1">
+        <Typography
+          variant="h4"
+          sx={{
             textTransform: "capitalize",
             marginBottom: "15px",
             margin: 0,
@@ -51,8 +52,8 @@ function Home() {
           }}
         >
           Loan Calculator Dashboard
-        </h1>
-        <div className="textFields">
+        </Typography>
+        <Box className="textFields">
           <TextField
             id="outlined-basic"
             label="Loan"
@@ -80,7 +81,7 @@ function Home() {
             value={termYear}
             onChange={(e) => setTermyear(e.target.value)}
           />
-        </div>
+        </Box>
         <Button
           size="20"
           variant="contained"
@@ -91,12 +92,12 @@ function Home() {
         >
           Calculate
         </Button>
-      </div>
+      </Box>
       {Emi != 0 && (
         <>
-          <div className="Box2">
+          <Box className="Box2">
             <EMI_chart emi={Emi} data={data} reset={reset} />
-          </div>
+          </Box>
         </>
       )}
     </Box>

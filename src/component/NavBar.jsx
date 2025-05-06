@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   useTheme,
   Switch,
+  Box
 } from "@mui/material";
 import { ContextProvider } from "../utility/ContextAPI";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -29,7 +30,7 @@ function NavBar() {
     <>
       <AppBar position="static" className="NavBar">
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             {isMobile && (
               <IconButton
                 edge="start"
@@ -44,11 +45,11 @@ function NavBar() {
             <Typography variant="h6" sx={{ color: "white" }}>
               Loan Calculator
             </Typography>
-          </div>
+          </Box>
 
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             {!isMobile && (
-              <div className="buttons">
+              <Box className="buttons">
                 <Button component={NavLink} to="/" className="nav-button">
                   Home
                 </Button>
@@ -69,16 +70,16 @@ function NavBar() {
                 >
                   Error Page
                 </Button>
-              </div>
+              </Box>
             )}
-            <div>
+            <Box>
               <Switch
                 checked={Values.mode}
                 onChange={handleModeChange}
                 name="mode"
               />
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
 
