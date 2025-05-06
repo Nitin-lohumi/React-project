@@ -74,7 +74,6 @@ function EMI_chart({ emi, data, reset }) {
         <CircularProgress color={theme.palette.text.primary} />
       </Box>
     );
-
   const currencySymbol = targetCurrency === "INR" ? "₹" : "$";
   const rate = exchangeRates[targetCurrency] || 1;
   return (
