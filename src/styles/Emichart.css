@@ -1,0 +1,12 @@
+.table {
+  width: 100%;
+}
+.selectClass{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+.buttonClass{
+    padding: 10px;
+}
