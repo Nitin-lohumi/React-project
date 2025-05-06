@@ -7,7 +7,7 @@ import EMI_chart from "./EMI_chart";
 function Home() {
   const theme = useTheme();
   const [Emi, setEmI] = useState(0);
-  const [loan, setloan] = useState(10000);
+  const [loan, setloan] = useState(100000);
   const [InterestRate, setInterestRate] = useState(8.5);
   const [termYear, setTermyear] = useState(5);
   const [data, setData] = useState({
@@ -29,6 +29,13 @@ function Home() {
     );
     setEmI(emi);
   };
+  function reset() {
+    setData(null);
+    setloan(10000);
+    setInterestRate(8.5);
+    setTermyear(5);
+    setEmI(0);
+  }
   return (
     <Box
       sx={{ p: 2, backgroundColor: theme.palette.background.default }}
@@ -40,6 +47,7 @@ function Home() {
             textTransform: "capitalize",
             marginBottom: "15px",
             margin: 0,
+            color: theme.palette.text.primary,
           }}
         >
           Loan Calculator Dashboard
@@ -87,7 +95,7 @@ function Home() {
       {Emi != 0 && (
         <>
           <div className="Box2">
-            <EMI_chart emi={Emi} data={data} />
+            <EMI_chart emi={Emi} data={data} reset={reset} />
           </div>
         </>
       )}

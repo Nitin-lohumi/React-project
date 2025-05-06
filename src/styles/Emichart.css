@@ -1,12 +1,30 @@
 .table {
   width: 100%;
 }
-.selectClass{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
+.selectClass {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
-.buttonClass{
+.buttonClass {
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  .responsive-table {
+    display: none;
+  }
+  .mobile-table {
+    display: block;
+  }
+  .mobile-card {
+    margin: 10px 0;
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  .mobile-card p {
+    margin: 5px 0;
+  }
 }

@@ -1,13 +1,13 @@
 .HomeBox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  height: 100%;
 }
 .Box1 {
   width: 1100px;
   max-width: 100%;
-  height: auto;
 }
 .textFields {
   margin-top: 15px;

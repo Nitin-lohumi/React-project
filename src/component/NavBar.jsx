@@ -14,10 +14,10 @@ import {
   useTheme,
   Switch,
 } from "@mui/material";
-import { ThemeContext } from "../utility/ThemeProvider";
+import { ContextProvider } from "../utility/ContextAPI";
 import MenuIcon from "@mui/icons-material/Menu";
 function NavBar() {
-  const Values = useContext(ThemeContext);
+  const Values = useContext(ContextProvider);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));

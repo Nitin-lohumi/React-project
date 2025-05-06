@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Table,
   TableBody,
@@ -13,17 +13,20 @@ import {
   MenuItem,
   Typography,
   Button,
+  useTheme,
 } from "@mui/material";
 import axios from "axios";
+import { ContextProvider } from "../utility/ContextAPI";
 import "../styles/Emichart.css";
-function EMI_chart({ emi, data }) {
+function EMI_chart({ emi, data, reset }) {
+  const Values = useContext(ContextProvider);
   const [targetCurrency, setTargetCurrency] = useState("USD");
-  const [currencyList, setCurrencyList] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [exchangeRates, setExchangeRates] = useState({});
   const [loading, setLoading] = useState(true);
   const { Loan, InterestRate, termYear } = data;
-
+  const { setCurrencyList, currencyList } = Values;
+  const theme = useTheme();
   useEffect(() => {
     async function fetchExchangeRate() {
       try {
@@ -69,9 +72,14 @@ function EMI_chart({ emi, data }) {
 
   const currencySymbol = targetCurrency === "INR" ? "₹" : "$";
   const rate = exchangeRates[targetCurrency] || 1;
-
   return (
     <>
+      <Box>
+        <h2 style={{ color: theme.palette.text.primary }}>
+          Monthly EMI: {currencySymbol}
+          {emi}
+        </h2>
+      </Box>
       <Box
         sx={{
           mb: 2,
@@ -82,7 +90,12 @@ function EMI_chart({ emi, data }) {
         }}
       >
         <div className="selectClass">
-          <Typography variant="h6">Select Currency:</Typography>
+          <Typography
+            variant="h6"
+            style={{ color: theme.palette.text.primary }}
+          >
+            Select Currency:
+          </Typography>
           <Select
             value={targetCurrency}
             onChange={(e) => setTargetCurrency(e.target.value)}
@@ -96,7 +109,9 @@ function EMI_chart({ emi, data }) {
           </Select>
         </div>
         <div className="buttonClass">
-          <Button variant="outlined">Reset</Button>
+          <Button variant="outlined" onClick={reset}>
+            Reset
+          </Button>
         </div>
       </Box>
 
@@ -104,7 +119,7 @@ function EMI_chart({ emi, data }) {
         component={Paper}
         sx={{ maxHeight: 400, overflowX: "auto" }}
       >
-        <Table stickyHeader sx={{ minWidth: 800 }}>
+        <Table stickyHeader sx={{ minWidth: 800 }} className="responsive-table">
           <TableHead>
             <TableRow>
               <TableCell>Month</TableCell>

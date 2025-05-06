@@ -5,10 +5,11 @@ import About from "./component/About";
 import ExchangeRate from "./component/ExchangeRate";
 import Home from "./component/Home";
 import ErrorPage from "./component/ErrorPage";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { ThemeContext } from "./utility/ThemeProvider";
+import { createTheme, ThemeProvider, Box, useTheme } from "@mui/material";
+import { ContextProvider } from "./utility/ContextAPI";
+import "./App.css";
 function App() {
-  const { mode } = useContext(ThemeContext);
+  const { mode } = useContext(ContextProvider);
   const LightTheme = createTheme({
     palette: {
       mode: "light",
@@ -24,8 +25,24 @@ function App() {
       background: { default: "#121212" },
     },
   });
+
   return (
     <ThemeProvider theme={mode ? DarkTheme : LightTheme}>
+      <InnerApp />
+    </ThemeProvider>
+  );
+}
+
+function InnerApp() {
+  const theme = useTheme();
+  return (
+    <Box
+      className="body"
+      sx={{
+        backgroundColor: theme.palette.background.default,
+        minHeight: "100vh",
+      }}
+    >
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,7 +50,7 @@ function App() {
         <Route path="/ExchangeRate" element={<ExchangeRate />} />
         <Route path="/ErrorPage" element={<ErrorPage />} />
       </Routes>
-    </ThemeProvider>
+    </Box>
   );
 }
 
