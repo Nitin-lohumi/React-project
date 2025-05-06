@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./component/NavBar";
 import About from "./component/About";
 import ExchangeRate from "./component/ExchangeRate";
@@ -35,22 +35,26 @@ function App() {
 
 function InnerApp() {
   const theme = useTheme();
+  const location = useLocation();
+  const showErrorPage = location.pathname === "/ErrorPage";
   return (
-    <Box
-      className="body"
-      sx={{
-        backgroundColor: theme.palette.background.default,
-        minHeight: "100vh",
-      }}
-    >
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/ExchangeRate" element={<ExchangeRate />} />
-        <Route path="/ErrorPage" element={<ErrorPage />} />
-      </Routes>
-    </Box>
+    <>
+      <Box
+        className="body"
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          minHeight: "100vh",
+        }}
+      >
+        {!showErrorPage && <NavBar />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/ExchangeRate" element={<ExchangeRate />} />
+          <Route path="/ErrorPage" element={<ErrorPage />} />
+        </Routes>
+      </Box>
+    </>
   );
 }
 
