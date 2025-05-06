@@ -39,7 +39,7 @@ function About() {
           }}
         >
           this is a Loan calulate app , single - page application
-          using react js ans Matrial UI
+          using react js and Matrial UI
         </Typography>
         <Divider
           sx={{
