@@ -38,7 +38,7 @@ function About() {
             color: theme.palette.text.secondary,
           }}
         >
-          this is a Loan calulate app is a modern , single - page application
+          this is a Loan calulate app , single - page application
           using react js ans Matrial UI
         </Typography>
         <Divider
